@@ -1,0 +1,24 @@
+import logo from './logo.svg';
+import './App.css';
+import { useState } from 'react';
+import React, {UseState} from 'react';
+
+function App() {
+  // let a = 1;
+  // let b=9;
+  // let c=a+b;
+  // console.log(c);
+
+const [value,setValue]=useState();
+console.log({value});
+  return <>
+ 
+<input name='viv' type={'text'} onChange={setValue}/>
+
+<p >
+    Привет, {value ? value.target.value : ' '}
+  </p>
+
+  </>;
+}
+export default App;
