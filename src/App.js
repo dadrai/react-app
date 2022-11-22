@@ -1,47 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
-import Remarkable from 'remarkable';
-import RemarkableReactRenderer from 'remarkable-react';
+import { useState } from 'react';
+import React, {UseState} from 'react';
 
+function App() {
+  // let a = 1;
+  // let b=9;
+  // let c=a+b;
+  // console.log(c);
 
-class MarkdownEditor extends React.Component {
-  constructor(props) {
-    super(props);
-    this.md = new Remarkable();
-    this.handleChange = this.handleChange.bind(this);
-    this.state = { value: 'Привет, **мир**!' };
-  }
+const [value,setValue]=useState();
+console.log({value});
+  return <>
+ 
+<input name='viv' type={'text'} onChange={setValue}/>
 
-  handleChange(e) {
-    this.setState({ value: e.target.value });
-  }
+<p >
+    Привет, {value ? value.target.value : ' '}
+  </p>
 
-  getRawMarkup() {
-    return { __html: this.md.render(this.state.value) };
-  }
-
-  render() {
-    return (
-      <div className="MarkdownEditor">
-        <h3>Редактор</h3>
-        <label htmlFor="markdown-content">
-          Введите что-нибудь
-        </label>
-        <textarea
-          id="markdown-content"
-          onChange={this.handleChange}
-          defaultValue={this.state.value}
-        />
-        <h3>Вывод</h3>
-        <div
-          className="content"
-          dangerouslySetInnerHTML={this.getRawMarkup()}
-        />
-      </div>
-    );
-  }
+  </>;
 }
+export default App;
 
-root.render(<MarkdownEditor />);
 
 
